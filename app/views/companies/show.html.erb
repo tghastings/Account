@@ -9,24 +9,25 @@
   <b>Phone:</b>
   <%= @company.phone %>
 </p>
-
+	<% unless @company.services.empty? %>
 <p>
 	<b>Current Services:</b>
-	<% unless @company.services.empty? %>
 	          <%= render @services %> <br /> <br />
-	      <% end %>
+	     
 	
 	<strong>Number of services:</strong> <%= @company.services.count %>
 </p>
-
+	 <% end %>
+	<% unless @company.users.empty? %>
 <p>
 	<b>Current Users:</b>
-	<% unless @company.users.empty? %>
 	          <%= render @users %> <br /> <br />
-	      <% end %>
+	  
 	
 	<strong>Number of Users:</strong> <%= @company.users.count %>
+	  
 </p>
+  <% end %>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
