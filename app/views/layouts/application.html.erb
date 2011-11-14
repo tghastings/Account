@@ -2,32 +2,113 @@
 <html>
 <head>
   <title>Accounts</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "reset" %>
+
+	<!--[if ! lte IE 6]><!-->
+		<%= stylesheet_link_tag    "style" %>
+	<!--<![endif]-->
+
+	<!--[if gt IE 6]>
+	<%= stylesheet_link_tag    "ie" %>
+	<![endif]-->
+
+	<!--[if lte IE 6]>
+	<link rel="stylesheet" href="http://universal-ie6-css.googlecode.com/files/ie6.1.1.css" media="screen, projection">
+	<![endif]-->
+  <%= stylesheet_link_tag    "fancybox" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<header> 
-			<h3>
-		<% if user_signed_in? %>
-	 Welcome, <%= current_user.email %>!
-		<% end %>
-		<% if admin_signed_in? %>
-		 Welcome, Admin! (<%= current_admin.email %>)
-		<% else %>
-		Welcome, guest!
-		<% end %>
-		</h3>
-		
-			<nav>
-				<ul>
-					<li><a href="/companies">Companies</a></li>
-					<li><a href="/services">Services</a></li>
+	
+	<div id="header">
+
+		<div class="container">
+
+			<a href="/" id="logo">Innopar Account Services</a>
+
+			<ul style="display:block; float:right; color:#fff; list-style:none; border-left: 1px solid #777;">
+				<li><% if user_signed_in? %>
+				 Welcome, <%= current_user.email %>!
+					<% end %>
+					<% if admin_signed_in? %>
+					 Welcome, Admin! (<%= current_admin.email %>)
+					<% else %>
+					Welcome, Guest! Please login.
+					<% end %></li>
+			</ul>
+
+			<ul id="nav">
+						<li><a href="/">Home</a></li>
+				<% if admin_signed_in? %>
+				<li><a href="#">Admin</a>
+					<ul>
+						<li><a href="/companies">+ Manage Companies</a></li>
+						<li><a href="/services">+ Manage Services</a></li>
+						<li><a href="/admins/edit">+ Edit Account</a></li>
+						<li><a href="/admins/sign_out">+ Logout</a></li>
+					</ul>
+					
+					</li>
+				<% end %>
+				<% if user_signed_in? %>
+				<li><a href="/companies">My Company</a></li>
+				<% end %>
+				<% if user_signed_in? %>
+				<li><a href="/logout">Logout</a></li>
+				<% end %>
+				
+			</ul>
+
+		</div><!-- end .container -->
+
+	</div><!-- end #header -->
+		<div class="clear"></div>
+
+		<div id="breadcrumbs">
+
+			<div class="container">
+
+				<ul class="breadcrumbs">
+					<li class="home"><a href="http://www.innopar.com">Main Website</a></li>
+					<li>&rarr;</li>
+					<li>Account Management</li>
 				</ul>
-				</nav>
-		</header>
+
+			</div><!-- end .container -->
+
+		</div><!-- end #breadcrumbs -->
+		
+		<div id="content">
+
+			<div class="container">
+
 
 <%= yield %>
+	</div><!-- end .container -->
 
+</div><!-- end #content -->
+<div id="footer">
+
+	<div class="container">
+
+		<p class="align-left">Contact us to learn more. <a href="mailto:sales@innopar.com">sales[at]innopar.com</a> or (719) 357-8441</p>
+
+		
+	</div><!-- end .container -->
+	
+</div><!-- end #footer -->
+
+
+<!-- start JS Scripts -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> 
+<script>window.jQuery || document.write('<script src="/assets/jquery-1.6.2.min.js"><\/script>')</script>
+<!--[if lt IE 9]>
+  <%= javascript_include_tag "IE9", "selectivizr-min" %>
+<![endif]-->
+
+<script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+  <%= javascript_include_tag "jquery.gridnav", "jquery.cycle.all", "jquery.jcarousel.min", "jquery.fancybox-1.3.4.pack", "jquery.easing.1.3.js", "gmap3.min.js", "custom.js" %>
+
+<!-- end JS Scripts -->
 </body>
 </html>

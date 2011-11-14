@@ -1,6 +1,11 @@
 Accounts::Application.routes.draw do
 
   devise_for :admins
+  devise_scope :admin do
+    get '/admin' => 'devise/sessions#new'
+  end
+  resources :user, :controller => "user"
+  
 
   resources :services
 

@@ -1,25 +1,27 @@
 <% 
  @companies =  Company.all
 
+if admin_signed_in?
 %>
 
-
-<h2>Sign up</h2>
-
+<div class="page-header clearfix">
+			<h1 class="page-title">Sign Up</h1>
+</div>
+<div class="form">
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
+  <div><%= f.label :email %>
   <%= f.email_field :email %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label :password %>
   <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %></div>
 
 
-  <div><%= f.label :company_id %><br />
+  <div><%= f.label :company_id %>
  	<select name="user[company_id]">
 		<%= render @companies %>
 
@@ -30,3 +32,10 @@
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
+<% else %>
+<div class="page-header clearfix">
+			<h1 class="page-title">Admin Access</h1>
+</div>
+	<p>Please <a href="/admins/sign_in">login</a>.</p>
+</div>
+<% end %>

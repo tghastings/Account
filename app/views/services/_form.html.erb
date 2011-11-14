@@ -1,3 +1,4 @@
+<div class="form">
 <%= form_for(@service) do |f| %>
   <% if @service.errors.any? %>
     <div id="error_explanation">
@@ -18,10 +19,11 @@
 	</select>
   </div>
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+</div>
