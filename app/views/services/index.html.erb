@@ -2,13 +2,13 @@
 			<h1 class="page-title">Listing services</h1>
 </div>
 
-<table>
+<table width="100%" style="text-align:center">
   <tr>
-    <th>Company</th>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th width="20%">Company</th>
+    <th width="20%">Name</th>
+    <th width="20%"></th>
+    <th width="20%"></th>
+    <th width="20%"></th>
   </tr>
 
 <% @services.each do |service| 
@@ -28,4 +28,4 @@
 
 <br />
 
-<%= link_to 'New Service', new_service_path %>
+<h4><%= link_to 'New Service', new_service_path %></h4>

@@ -2,13 +2,13 @@
 			<h1 class="page-title">Listing companies</h1>
 </div><!-- end .page-header -->
 
-<table>
+<table width="100%" style="text-align:center">
   <tr>
-    <th>Name</th>
-    <th>Phone</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th width="20%">Name</th>
+    <th width="20%">Phone</th>
+    <th width="20%"></th>
+    <th width="20%"></th>
+    <th width="20%"></th>
   </tr>
 
 <% @companies.each do |company| %>
@@ -24,4 +24,4 @@
 
 <br />
 
-<%= link_to 'New Company', new_company_path %>
+<h4><%= link_to 'New Company', new_company_path %></h4>
