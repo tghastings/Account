@@ -31,7 +31,6 @@ end
   if user_signed_in? or admin_signed_in? 
       @company = Company.find(params[:id])
       @services = @company.services
-      @users = @company.users
         respond_to do |format|
           format.html # show.html.erb
           format.json { render json: @company }
