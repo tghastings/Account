@@ -1,4 +1,8 @@
 Accounts::Application.routes.draw do
+  resources :services
+
+  resources :companies
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

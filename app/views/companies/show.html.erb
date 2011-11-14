@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @company.name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @company.phone %>
+</p>
+
+<p>
+	<b>Current Services:</b>
+	<% unless @company.services.empty? %>
+	          <%= render @services %> <br /> <br />
+	      <% end %>
+	
+	<strong>Number of services:</strong> <%= @company.services.count %>
+</p>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>
