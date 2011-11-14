@@ -18,7 +18,16 @@
 	<strong>Number of services:</strong> <%= @company.services.count %>
 </p>
 	 <% end %>
-
+	<% unless @users.empty? %>
+<p>
+	<b>Current Users:</b>
+	          <%= render @users %> <br /> <br />
+	  
+	
+	<strong>Number of Users:</strong> <%= @users.count %>
+	  
+</p>
+  <% end %>
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
