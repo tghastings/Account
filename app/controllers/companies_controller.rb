@@ -23,18 +23,22 @@ end
   # GET /companies/1
   # GET /companies/1.json
   def show
-    
-    if user_signed_in? and current_user.company_id == params[:id] or admin_signed_in?
-       @company = Company.find(params[:id])
-       @services = @company.services
-       @users = @company.users
+   if user_signed_in?
+     unless current_user.company_id == params[:id]
+       redirect_to root_path
+     end
+  end
+  if user_signed_in? or admin_signed_in? 
+      @company = Company.find(params[:id])
+      @services = @company.services
+      @users = @company.users
         respond_to do |format|
           format.html # show.html.erb
           format.json { render json: @company }
         end
-    else  
-       redirect_to "/login"
-  end
+    else 
+      redirect_to root_path
+    end
 end
   # GET /companies/new
   # GET /companies/new.json
