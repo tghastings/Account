@@ -7,6 +7,25 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header> 
+			<h3>
+		<% if user_signed_in? %>
+	 Welcome, <%= current_user.email %>!
+		<% end %>
+		<% if admin_signed_in? %>
+		 Welcome, Admin! (<%= current_admin.email %>)
+		<% else %>
+		Welcome, guest!
+		<% end %>
+		</h3>
+		
+			<nav>
+				<ul>
+					<li><a href="/companies">Companies</a></li>
+					<li><a href="/services">Services</a></li>
+				</ul>
+				</nav>
+		</header>
 
 <%= yield %>
 

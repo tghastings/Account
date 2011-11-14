@@ -10,10 +10,12 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :company_id %><br />
-    <%= f.number_field :company_id %>
+	<strong>Select a company:</strong>
+	 <div class="field">
+	<select name="service[company_id]">
+		<%= render @companies %>
+	
+	</select>
   </div>
   <div class="field">
     <%= f.label :name %><br />

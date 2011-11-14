@@ -1,7 +1,19 @@
 Accounts::Application.routes.draw do
+
+  devise_for :admins
+
   resources :services
 
   resources :companies
+  
+    devise_for :users
+    devise_scope :user do
+      get '/login' => 'devise/sessions#new'
+      get '/logout' => 'devise/sessions#destroy'
+    end
+    resources :user, :controller => "user"
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -52,11 +64,11 @@ Accounts::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => 'welcome#index'
+   root :to => 'companies#index'
 
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  # match ':controller(/:action(/
 end
