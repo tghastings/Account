@@ -28,8 +28,10 @@
 					<% end %>
 					<% if admin_signed_in? %>
 					 Welcome, Admin! (<%= current_admin.email %>)
+					<% end %>
+					<% if admin_signed_in? or user_signed_in? %>
 					<% else %>
-					Welcome, Guest! Please login.
+						Welcome, Guest! Please login.
 					<% end %></li>
 			</ul>
 

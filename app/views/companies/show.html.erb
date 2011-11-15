@@ -1,8 +1,10 @@
 <div class="page-header clearfix">
 			<h1 class="page-title"><%= @company.name %></h1>
 </div><!-- end .page-header -->
-<p id="notice"><%= notice %></p>
 
+<p id="notice"><%= notice %></p>
+<div class="one-half">
+<h4>Company Information</h4>
 <p>
   <b>Name:</b>
   <%= @company.name %>
@@ -12,25 +14,38 @@
   <b>Phone:</b>
   <%= @company.phone %>
 </p>
-	<% unless @company.services.empty? %>
-<p>
-	<b>Current Services:</b>
-	          <%= render @services %> <br /> <br />
-	     
 	
-	<strong>Number of services:</strong> <%= @company.services.count %>
-</p>
-	 <% end %>
-	<% unless @users.empty? %>
-<p>
-	<b>Current Users:</b>
-	          <%= render @users %> <br /> <br />
-	  
-	
-	<strong>Number of Users:</strong> <%= @users.count %>
-	  
-</p>
-  <% end %>
+</div><!-- end .three-fourth -->
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+<div class="one-half last">
+<% unless @company.services.empty? %>
+	<h4>Company Usage</h4>
+
+	<div class="infobox">
+
+	<p>
+		<b>Current Services</b> <br />
+		         
+		<%= render @services %>
+
+	</p>
+		 <% end %>
+		<% unless @users.empty? %>
+	<p>
+		<b>Current Users</b>
+		       <br />   <%= render @users %> <br /> <br />
+
+
+	</p>
+	 
+		
+	</div>
+ <% end %>
+	
+</div><!-- end .one-fourthlast -->
+
+
+	
+
+<h4><%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %> </h4>
