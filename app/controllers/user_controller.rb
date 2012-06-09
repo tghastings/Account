@@ -40,6 +40,18 @@ class UserController < ApplicationController
     end
   end
   
+  def show
+    if admin_signed_in?
+        @user = User.find(params[:id])
+        if @user.destroy
+          flash[:notice] = "Successfully deleted User."
+        end
+      end
+else 
+  redirect_to :back
+end
+  
+  
   def destroy
     if admin_signed_in?
         @user = User.find(params[:id])
